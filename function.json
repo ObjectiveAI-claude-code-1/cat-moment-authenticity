@@ -1,5 +1,58 @@
 {
   "type": "vector.function",
+  "input_maps": [
+    {
+      "$starlark": "input"
+    }
+  ],
+  "tasks": [
+    {
+      "type": "vector.function",
+      "owner": "ObjectiveAI-claude-code-1",
+      "repository": "cat-fleeting-moment-rank",
+      "commit": "3c44fee5e4bab85124b3f30ea4ec4465d998cd78",
+      "skip": null,
+      "input": {
+        "$jmespath": "input"
+      },
+      "output": {
+        "$jmespath": "output"
+      }
+    },
+    {
+      "type": "vector.function",
+      "owner": "ObjectiveAI-claude-code-1",
+      "repository": "cat-transitional-vitality",
+      "commit": "9efb89116a8bfc55090c988adcb236155d8f60bb",
+      "skip": null,
+      "input": {
+        "$jmespath": "input"
+      },
+      "output": {
+        "$jmespath": "output"
+      }
+    },
+    {
+      "type": "scalar.function",
+      "owner": "ObjectiveAI-claude-code-1",
+      "repository": "cat-particularity",
+      "commit": "2f8433595258e1cd9c514645ed550fefdeded30f",
+      "map": 0,
+      "input": {
+        "$jmespath": "map"
+      },
+      "output": {
+        "$starlark": "[x / sum(output) if sum(output) > 0 else 1.0 / len(output) for x in output]"
+      }
+    }
+  ],
+  "input_split": {
+    "$starlark": "[[item] for item in input]"
+  },
+  "input_merge": {
+    "$starlark": "[item for sublist in input for item in sublist]"
+  },
+  "description": "Ranks cat pictures by how authentic and unrepeatable the captured moment feels. Evaluates temporal specificity (precise timing), transitional vitality (caught between states), and particular intimacy (this specific cat in this specific life). Rewards encounters over documentation.",
   "input_schema": {
     "type": "array",
     "description": "A collection of cat pictures to rank by the moment authenticity captured in each image.",
@@ -11,89 +64,5 @@
   },
   "output_length": {
     "$starlark": "len(input)"
-  },
-  "input_split": {
-    "$starlark": "[[item] for item in input]"
-  },
-  "input_merge": {
-    "$starlark": "[item for sublist in input for item in sublist]"
-  },
-  "tasks": [
-    {
-      "type": "placeholder.vector.function",
-      "input_schema": {
-        "type": "array",
-        "description": "Cat pictures to rank by the temporal specificity of the captured moment.",
-        "minItems": 2,
-        "items": {
-          "type": "image",
-          "description": "A cat picture to evaluate for temporal specificity."
-        }
-      },
-      "output_length": {
-        "$starlark": "len(input)"
-      },
-      "input_split": {
-        "$starlark": "[[item] for item in input]"
-      },
-      "input_merge": {
-        "$starlark": "[item for sublist in input for item in sublist]"
-      },
-      "skip": null,
-      "input": {
-        "$jmespath": "input"
-      },
-      "output": {
-        "$jmespath": "output"
-      }
-    },
-    {
-      "type": "placeholder.vector.function",
-      "input_schema": {
-        "type": "array",
-        "description": "Cat pictures to rank by the transitional vitality visible in each image.",
-        "minItems": 2,
-        "items": {
-          "type": "image",
-          "description": "A cat picture to evaluate for transitional vitality."
-        }
-      },
-      "output_length": {
-        "$starlark": "len(input)"
-      },
-      "input_split": {
-        "$starlark": "[[item] for item in input]"
-      },
-      "input_merge": {
-        "$starlark": "[item for sublist in input for item in sublist]"
-      },
-      "skip": null,
-      "input": {
-        "$jmespath": "input"
-      },
-      "output": {
-        "$jmespath": "output"
-      }
-    },
-    {
-      "type": "placeholder.scalar.function",
-      "input_schema": {
-        "type": "image",
-        "description": "A single cat picture to evaluate for particular intimacy — the degree to which it feels like a portrait of a specific individual in a specific life."
-      },
-      "map": 0,
-      "input": {
-        "$jmespath": "map"
-      },
-      "output": {
-        "$starlark": "[x / sum(output) if sum(output) > 0 else 1.0 / len(output) for x in output]"
-      }
-    }
-  ],
-  "input_maps": [
-    {
-      "$starlark": "input"
-    }
-  ],
-  "description": "Ranks cat pictures by how authentic and unrepeatable the captured moment feels. Evaluates temporal specificity (precise timing), transitional vitality (caught between states), and particular intimacy (this specific cat in this specific life). Rewards encounters over documentation."
+  }
 }

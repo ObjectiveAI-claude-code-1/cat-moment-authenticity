@@ -33,19 +33,19 @@ The function decomposes moment authenticity into three qualities, each assessed 
 
 ### 1. Temporal Specificity
 
-**Sub-function:** [{{ .Task0 }}](https://github.com/{{ .Owner }}/{{ .Task0 }})
+**Sub-function:** [cat-fleeting-moment-rank](https://github.com/ObjectiveAI-claude-code-1/cat-fleeting-moment-rank)
 
 The sense that the photograph could only have been taken at this exact fraction of a second. Evaluates whether the image captures a fleeting, unrepeatable instant — a peak action (mid-leap, mid-yawn), a micro-expression (ears flattening at a sound, a slow blink caught at its most closed), or a split-second of bodily tension (muscles gathered before a spring, the soft collapse into sleep). The core test: if this photo had been taken one second earlier or later, would it look meaningfully different? Images where the answer is emphatically *yes* rank higher. Images depicting stable, persistent states that could be photographed at any point across minutes rank lower.
 
 ### 2. Transitional Vitality
 
-**Sub-function:** [{{ .Task1 }}](https://github.com/{{ .Owner }}/{{ .Task1 }})
+**Sub-function:** [cat-transitional-vitality](https://github.com/ObjectiveAI-claude-code-1/cat-transitional-vitality)
 
 The degree to which the cat is caught in a state of *becoming* rather than a settled state of *being*. Evaluates whether the cat is visibly between two conditions — between stillness and motion, sleep and wakefulness, curiosity and indifference, composure and surprise. This includes physical transitions (a body mid-stretch, a head in the act of turning, weight shifting unevenly between paws) and emotional transitions (awareness flooding into a newly opened eye, a playful cat freezing into uncertainty). Images that vibrate with implied before-and-after rank higher. Images where the cat is fixed in a single stable condition rank lower.
 
 ### 3. Particular Intimacy
 
-**Sub-function:** [{{ .Task2 }}](https://github.com/{{ .Owner }}/{{ .Task2 }})
+**Sub-function:** [cat-particularity](https://github.com/ObjectiveAI-claude-code-1/cat-particularity)
 
 The sense that this photograph is of *this cat*, in *this place*, at *this time* — not a generic record of the species. Evaluates specificity of detail: posture that suggests personality, a relationship between cat and environment that implies familiarity and belonging, a gaze that feels directed and particular, and contextual details that anchor the moment in a real, lived-in world. Also evaluates narrative quality — whether the image implies a story about this cat's day, habits, and private life. Images that feel like intimate encounters with a particular being rank higher. Images where the cat and surroundings feel interchangeable and anonymous rank lower.
 
@@ -63,9 +63,9 @@ The function is a `vector.function` that decomposes its evaluation into three su
 
 | Task | Type | Evaluates |
 |------|------|-----------|
-| [{{ .Task0 }}](https://github.com/{{ .Owner }}/{{ .Task0 }}) | vector | Temporal specificity — precision of the captured instant |
-| [{{ .Task1 }}](https://github.com/{{ .Owner }}/{{ .Task1 }}) | vector | Transitional vitality — dynamic process between states |
-| [{{ .Task2 }}](https://github.com/{{ .Owner }}/{{ .Task2 }}) | scalar (mapped) | Particular intimacy — individuality and narrative specificity |
+| [cat-fleeting-moment-rank](https://github.com/ObjectiveAI-claude-code-1/cat-fleeting-moment-rank) | vector | Temporal specificity — precision of the captured instant |
+| [cat-transitional-vitality](https://github.com/ObjectiveAI-claude-code-1/cat-transitional-vitality) | vector | Transitional vitality — dynamic process between states |
+| [cat-particularity](https://github.com/ObjectiveAI-claude-code-1/cat-particularity) | scalar (mapped) | Particular intimacy — individuality and narrative specificity |
 
 The first two sub-functions rank all images relative to each other as a set. The third scores each image individually for particular intimacy, then normalizes the scores into a relative ranking. The function's final output is the weighted average of all three task outputs.
 
