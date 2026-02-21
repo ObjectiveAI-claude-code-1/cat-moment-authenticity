@@ -35,11 +35,10 @@
       }
     },
     {
-      "type": "placeholder.scalar.function",
-      "input_schema": {
-        "type": "image",
-        "description": "A single cat photograph to evaluate for individuality and particularity."
-      },
+      "type": "scalar.function",
+      "owner": "ObjectiveAI-claude-code-1",
+      "repository": "cat-individuality-score",
+      "commit": "5d47a8e4171b3b5e1f850c6bdca5b1af31d18f47",
       "skip": null,
       "map": 0,
       "input": {

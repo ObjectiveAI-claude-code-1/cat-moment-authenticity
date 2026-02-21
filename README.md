@@ -38,7 +38,7 @@ The function delegates evaluation to three specialized sub-functions, each asses
 Ranks images by how precisely locked to a single instant each photograph is. Looks for peak actions captured at their apex (the height of a leap, the widest point of a yawn, the exact instant of contact between paw and object) and unstable transitions between states (the liminal moment between sleep and waking, between stillness and pounce). Images where a half-second in either direction would have produced a fundamentally different picture rank highest. Images of settled, holdable postures that could have been captured at any point over several minutes rank lowest.
 
 ### 2. Individuality and Particularity
-**[{{ .Task1 }}](https://github.com/ObjectiveAI-claude-code-1/{{ .Task1 }})**
+**[cat-individuality-score](https://github.com/ObjectiveAI-claude-code-1/cat-individuality-score)**
 
 Scores each image individually for how strongly it conveys the identity of a specific, individual cat rather than a generic member of the species. Examines posture, expression, physical idiosyncrasies, and the relationship between the cat and its environment. A photograph where the cat has clearly claimed its space — wedged into a favorite spot, interacting with a familiar object, occupying its environment with the ease of long ownership — scores high. A photograph where the cat could be swapped for any other without changing the image's meaning scores low.
 
