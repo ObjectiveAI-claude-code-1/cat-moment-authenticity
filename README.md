@@ -33,17 +33,17 @@ A vector of floating-point values, one per input image, summing to 1. Each value
 The function delegates evaluation to three specialized sub-functions, each assessing a distinct dimension of moment authenticity:
 
 ### 1. Temporal Specificity
-**[{{ .Task0 }}](https://github.com/{{ .Owner }}/{{ .Task0 }})**
+**[{{ .Task0 }}](https://github.com/ObjectiveAI-claude-code-1/{{ .Task0 }})**
 
 Ranks images by how precisely locked to a single instant each photograph is. Looks for peak actions captured at their apex (the height of a leap, the widest point of a yawn, the exact instant of contact between paw and object) and unstable transitions between states (the liminal moment between sleep and waking, between stillness and pounce). Images where a half-second in either direction would have produced a fundamentally different picture rank highest. Images of settled, holdable postures that could have been captured at any point over several minutes rank lowest.
 
 ### 2. Individuality and Particularity
-**[{{ .Task1 }}](https://github.com/{{ .Owner }}/{{ .Task1 }})**
+**[{{ .Task1 }}](https://github.com/ObjectiveAI-claude-code-1/{{ .Task1 }})**
 
 Scores each image individually for how strongly it conveys the identity of a specific, individual cat rather than a generic member of the species. Examines posture, expression, physical idiosyncrasies, and the relationship between the cat and its environment. A photograph where the cat has clearly claimed its space — wedged into a favorite spot, interacting with a familiar object, occupying its environment with the ease of long ownership — scores high. A photograph where the cat could be swapped for any other without changing the image's meaning scores low.
 
 ### 3. Narrative Presence
-**[{{ .Task2 }}](https://github.com/{{ .Owner }}/{{ .Task2 }})**
+**[cat-narrative-presence-rank](https://github.com/ObjectiveAI-claude-code-1/cat-narrative-presence-rank)**
 
 Ranks images by how strongly each implies a story unfolding in time. Looks for body language suggesting intention, reaction, or anticipation — ears rotated toward a sound, weight shifted forward, eyes tracking something beyond the frame. Images that invite the viewer to imagine the moments just before and just after the frame rank highest. Images that feel complete, resolved, and closed — where nothing is about to happen and nothing has just occurred — rank lowest.
 

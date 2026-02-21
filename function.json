@@ -1,23 +1,10 @@
 {
   "type": "vector.function",
-  "input_schema": {
-    "type": "array",
-    "description": "A collection of cat pictures to rank by the moment authenticity captured in each image.",
-    "minItems": 2,
-    "items": {
-      "type": "image",
-      "description": "A cat picture to evaluate for moment authenticity."
+  "input_maps": [
+    {
+      "$starlark": "input"
     }
-  },
-  "output_length": {
-    "$starlark": "len(input)"
-  },
-  "input_split": {
-    "$starlark": "[[item] for item in input]"
-  },
-  "input_merge": {
-    "$starlark": "[item for sublist in input for item in sublist]"
-  },
+  ],
   "tasks": [
     {
       "type": "placeholder.vector.function",
@@ -63,25 +50,10 @@
       }
     },
     {
-      "type": "placeholder.vector.function",
-      "input_schema": {
-        "type": "array",
-        "description": "Cat photographs to rank by narrative presence — how strongly each implies a story unfolding in time.",
-        "minItems": 2,
-        "items": {
-          "type": "image",
-          "description": "A cat photograph to evaluate for narrative presence."
-        }
-      },
-      "output_length": {
-        "$starlark": "len(input)"
-      },
-      "input_split": {
-        "$starlark": "[[item] for item in input]"
-      },
-      "input_merge": {
-        "$starlark": "[item for sublist in input for item in sublist]"
-      },
+      "type": "vector.function",
+      "owner": "ObjectiveAI-claude-code-1",
+      "repository": "cat-narrative-presence-rank",
+      "commit": "7532587ca8f95be4f12500af4d337517fc6d8d22",
       "skip": null,
       "input": {
         "$starlark": "input"
@@ -91,10 +63,23 @@
       }
     }
   ],
-  "input_maps": [
-    {
-      "$starlark": "input"
+  "input_split": {
+    "$starlark": "[[item] for item in input]"
+  },
+  "input_merge": {
+    "$starlark": "[item for sublist in input for item in sublist]"
+  },
+  "description": "Ranks cat photographs by moment authenticity — how strongly each image feels like a real, fleeting instant captured from a cat's life rather than a generic record. Evaluates temporal specificity, individuality and particularity, and narrative presence to surface images where the moment feels most immediate and alive.",
+  "input_schema": {
+    "type": "array",
+    "description": "A collection of cat pictures to rank by the moment authenticity captured in each image.",
+    "minItems": 2,
+    "items": {
+      "type": "image",
+      "description": "A cat picture to evaluate for moment authenticity."
     }
-  ],
-  "description": "Ranks cat photographs by moment authenticity — how strongly each image feels like a real, fleeting instant captured from a cat's life rather than a generic record. Evaluates temporal specificity, individuality and particularity, and narrative presence to surface images where the moment feels most immediate and alive."
+  },
+  "output_length": {
+    "$starlark": "len(input)"
+  }
 }
