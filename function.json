@@ -1,0 +1,100 @@
+{
+  "type": "vector.function",
+  "input_schema": {
+    "type": "array",
+    "description": "A collection of cat pictures to rank by the moment authenticity captured in each image.",
+    "minItems": 2,
+    "items": {
+      "type": "image",
+      "description": "A cat picture to evaluate for moment authenticity."
+    }
+  },
+  "output_length": {
+    "$starlark": "len(input)"
+  },
+  "input_split": {
+    "$starlark": "[[item] for item in input]"
+  },
+  "input_merge": {
+    "$starlark": "[item for sublist in input for item in sublist]"
+  },
+  "tasks": [
+    {
+      "type": "placeholder.vector.function",
+      "input_schema": {
+        "type": "array",
+        "description": "Cat photographs to rank by temporal specificity — how precisely each is locked to a single fleeting instant.",
+        "minItems": 2,
+        "items": {
+          "type": "image",
+          "description": "A cat photograph to evaluate for temporal specificity."
+        }
+      },
+      "output_length": {
+        "$starlark": "len(input)"
+      },
+      "input_split": {
+        "$starlark": "[[item] for item in input]"
+      },
+      "input_merge": {
+        "$starlark": "[item for sublist in input for item in sublist]"
+      },
+      "skip": null,
+      "input": {
+        "$starlark": "input"
+      },
+      "output": {
+        "$starlark": "output"
+      }
+    },
+    {
+      "type": "placeholder.scalar.function",
+      "input_schema": {
+        "type": "image",
+        "description": "A single cat photograph to evaluate for individuality and particularity."
+      },
+      "skip": null,
+      "map": 0,
+      "input": {
+        "$starlark": "map"
+      },
+      "output": {
+        "$starlark": "[x / sum(output) if sum(output) > 0 else 1.0 / len(output) for x in output]"
+      }
+    },
+    {
+      "type": "placeholder.vector.function",
+      "input_schema": {
+        "type": "array",
+        "description": "Cat photographs to rank by narrative presence — how strongly each implies a story unfolding in time.",
+        "minItems": 2,
+        "items": {
+          "type": "image",
+          "description": "A cat photograph to evaluate for narrative presence."
+        }
+      },
+      "output_length": {
+        "$starlark": "len(input)"
+      },
+      "input_split": {
+        "$starlark": "[[item] for item in input]"
+      },
+      "input_merge": {
+        "$starlark": "[item for sublist in input for item in sublist]"
+      },
+      "skip": null,
+      "input": {
+        "$starlark": "input"
+      },
+      "output": {
+        "$starlark": "output"
+      }
+    }
+  ],
+  "input_maps": [
+    {
+      "$starlark": "input"
+    }
+  ],
+  "description": "Ranks cat photographs by moment authenticity — how strongly each image feels like a real, fleeting instant captured from a cat's life rather than a generic record. Evaluates temporal specificity, individuality and particularity, and narrative presence to surface images where the moment feels most immediate and alive."
+}
